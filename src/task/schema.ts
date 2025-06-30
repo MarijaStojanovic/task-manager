@@ -14,7 +14,7 @@ export const TaskSchema = new Schema({
 export interface Task extends Document {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   status: string;
   createdAt: Date;
 }

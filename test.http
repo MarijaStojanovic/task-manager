@@ -1,0 +1,17 @@
+### GET root test
+GET http://localhost:3000/
+
+### POST create task
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "title": "Learn",
+  "description": "Node"
+}
+
+### GET all tasks
+GET http://localhost:3000/tasks
+
+### GET one task
+GET http://localhost:3000/tasks/{id}
