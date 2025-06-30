@@ -7,7 +7,7 @@ import {
   Patch,
   Delete,
 } from '@nestjs/common';
-import { TaskService } from './service';
+import { TaskService } from './task.service';
 
 @Controller('tasks')
 export class TaskController {
