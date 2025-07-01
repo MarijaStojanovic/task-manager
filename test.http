@@ -1,3 +1,16 @@
+
+### POST Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "test4@example.com",
+  "password": "12345"
+}
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODYyZmMzYTI5ZWIyMDkxMTJhOTFiYTkiLCJlbWFpbCI6InRlc3Q0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzUxMzc3NjYxLCJleHAiOjE3NTEzODEyNjF9.BdiOgjslK4COmNkwqEUKxlyL1pOameaxJFks52pjRec
+
+
 ### GET root test
 GET http://localhost:3000/
 
@@ -12,6 +25,7 @@ Content-Type: application/json
 
 ### GET all tasks
 GET http://localhost:3000/tasks
+Authorization: Bearer {{token}}
 
 ### GET one task
 GET http://localhost:3000/tasks/{id}
@@ -46,13 +60,4 @@ Content-Type: application/json
   "email": "test7@example.com",
   "password": "12345",
   "name": "Test User"
-}
-
-### POST Login
-POST http://localhost:3000/auth/login
-Content-Type: application/json
-
-{
-  "email": "test4@example.com",
-  "password": "12345"
 }
