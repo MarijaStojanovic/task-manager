@@ -1,4 +1,5 @@
-import { Schema, Document } from 'mongoose';
+import { Schema, Document, Types } from 'mongoose';
+import { User } from '../users/user.schema';
 
 export const TaskSchema = new Schema({
   title: { type: String, required: true },
@@ -9,6 +10,7 @@ export const TaskSchema = new Schema({
     default: 'pending',
   },
   createdAt: { type: Date, default: Date.now },
+  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
 export interface Task extends Document {
@@ -17,4 +19,5 @@ export interface Task extends Document {
   description?: string;
   status: string;
   createdAt: Date;
+  user: Types.ObjectId | User;
 }

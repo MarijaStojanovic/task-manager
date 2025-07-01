@@ -7,9 +7,9 @@ import { Task } from './task.schema';
 export class TaskService {
   constructor(@InjectModel('Task') private taskModel: Model<Task>) {}
 
-  async createTask(title: string, description?: string): Promise<Task> {
-    const newTask = new this.taskModel({ title, description });
-    return newTask.save();
+  async createTask(title: string, userId: string, description?: string) {
+    const task = new this.taskModel({ title, description, user: userId });
+    return task.save();
   }
 
   async findAll(): Promise<Task[]> {
