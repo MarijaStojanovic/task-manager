@@ -26,3 +26,33 @@ Content-Type: application/json
 
 ### DELETE task remove
 DELETE http://localhost:3000/tasks/{id}
+
+
+### POST add new user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "marija@example.com",
+  "password": "123",
+  "name": "Marija"
+}
+
+### POST Registration
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "email": "test7@example.com",
+  "password": "12345",
+  "name": "Test User"
+}
+
+### POST Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "test4@example.com",
+  "password": "12345"
+}
