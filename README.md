@@ -27,6 +27,24 @@
 
 ## Project setup
 
+<h2>Environment variables</h2>
+
+<p>
+  Before running the project, create a <code>.env</code> file in the root directory with the following content:
+</p>
+
+<pre><code>MONGO_URI=your-mongodb-connection-string
+PORT=3000
+JWT_SECRET=your-secret-key
+</code></pre>
+
+<ul>
+  <li><strong>MONGO_URI</strong> – MongoDB connection string <em>(required)</em></li>
+  <li><strong>PORT</strong> – Port number your app runs on <em>(optional; default is <code>3000</code>)</em></li>
+  <li><strong>JWT_SECRET</strong> – Secret key used for signing JWT tokens <em>(required)</em></li>
+</ul>
+
+
 ```bash
 $ npm install
 ```
