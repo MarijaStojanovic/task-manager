@@ -13,6 +13,12 @@ import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Request } from 'express';
 
+interface AuthRequest extends Request {
+  user: {
+    userId: string;
+    email: string;
+  };
+}
 @Controller('tasks')
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
@@ -21,7 +27,7 @@ export class TaskController {
   @Post()
     async create(
     @Body() body: { title: string; description?: string },
-    @Req() req: Request,
+    @Req() req: AuthRequest,
   ) {
     const user = req.user as { userId: string; email: string };
     return this.taskService.createTask(
@@ -51,13 +57,14 @@ export class TaskController {
       description?: string;
       status: string;
     }>,
+     @Req() req: AuthRequest,
   ) {
-    return this.taskService.updateTask(id, updateData);
+    return this.taskService.updateTask(id, req.user.userId, updateData);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return this.taskService.deleteTask(id);
+  async remove(@Param('id') id: string,  @Req() req: AuthRequest,) {
+    return this.taskService.deleteTask(id, req.user.userId);
   }
 }
